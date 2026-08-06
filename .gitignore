@@ -1,0 +1,18 @@
+# Python virtual environment
+venv/
+env/
+.venv/
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Raw data / temporary Excel locks
+~$*.xlsx
