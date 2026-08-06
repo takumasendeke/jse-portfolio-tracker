@@ -56,8 +56,9 @@ def fetch_jse_data(tickers, period="1y"):
     results_df = pd.DataFrame(metrics)
     return results_df
 
+from pathlib import Path
+
 if __name__ == "__main__":
-    # Example list of strong JSE sectors: Financials, Tech, Resources, Retail
     target_companies = [
         "FSR.JO",  # FirstRand (Banking)
         "SBK.JO",  # Standard Bank (Banking)
@@ -71,9 +72,18 @@ if __name__ == "__main__":
     portfolio_metrics = fetch_jse_data(target_companies, period="1y")
     
     print("\n--- JSE Quantitative Screen Results ---")
-    # Sort by volatility to easily identify low-risk vs high-risk assets
     sorted_metrics = portfolio_metrics.sort_values(by="Annual_Volatility", ascending=True)
     print(sorted_metrics.to_string(index=False))
     
-    # Save the processed data for your weekly reports
-    # portfolio_metrics.to_csv("../data/processed/initial_screener_results.csv", index=False)
+    # --- DYNAMIC PATH FIX ---
+    # Finds the root folder relative to this script file
+    script_dir = Path(__file__).resolve().parent
+    project_root = script_dir.parent
+    
+    output_dir = project_root / "data" / "processed"
+    output_dir.mkdir(parents=True, exist_ok=True)  # Creates folders if missing
+    
+    output_file = output_dir / "initial_screener_results.csv"
+    portfolio_metrics.to_csv(output_file, index=False)
+    
+    print(f"\n[SUCCESS] Screener results saved to: {output_file}")

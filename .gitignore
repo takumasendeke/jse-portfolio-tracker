@@ -16,3 +16,6 @@ Thumbs.db
 
 # Raw data / temporary Excel locks
 ~$*.xlsx
+
+# Personal notes
+notes.txt
