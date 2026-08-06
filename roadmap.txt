@@ -1,0 +1,27 @@
+1.Phase 1: 
+    The Initial Allocation:Action for this week.
+    Screen: Add 15 companies to your Python script and run it.
+    Select: Pick 4 companies across 3 sectors based on the metrics.
+    Document: Write the 4 required Investment Decision Sheets.
+    Execute: Buy the shares on the EasyEquities Demo account.
+    Log: Immediately record the purchase price, quantity, and brokerage fees in your shared Excel tracker.
+
+2.Phase 2: 
+    The Weekly Grind:The recurring maintenance loop.
+    Every Friday afternoon, complete this loop:Tech: Run the Python script to get updated prices.
+    Ops: Update the Excel tracker to calculate the new Running Portfolio Value.
+    Research: Find one news article about a company in your portfolio.(This is where you can use ChatGPT/Claude: feed it the article and ask for a 200-word summary of the event and its market impact).
+    Group: Write the mandatory one-page Weekly Portfolio Review.
+
+3.Phase 3: 
+    Rebalancing:Keep an eye on the 5 mandatory trades requirement.
+    Over the semester, you must execute at least 5 additional trades (buying, selling, or switching).
+    If your tech script alerts you that a stock's volatility has spiked dangerously, sell it.
+    Write a "Selling a Share" justification citing the mathematical change in risk.
+    Immediately log the brokerage fees and profit/loss in the Excel tracker.
+
+4.Phase 4: 
+    The Final Deliverables:Preparing for October 9th.
+    The Excel Workbook: Ensure all columns are calculated using Excel formulas (do not hardcode the profit/loss; Excel must do the math to get the 15 marks).
+    The Presentation (5-7 mins): Since you built a screener, you can generate simple line charts in Python using matplotlib to visually show your portfolio's performance against the broader market.
+    Individual Reflection: Each member submits their one-page reflection on risk and lessons learned.
