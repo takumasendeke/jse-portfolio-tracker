@@ -65,13 +65,49 @@ from pathlib import Path
 
 if __name__ == "__main__":
     target_companies = [
-        "FSR.JO",  # FirstRand (Banking)
-        "SBK.JO",  # Standard Bank (Banking)
-        "NPN.JO",  # Naspers (Tech/Internet)
-        "AGL.JO",  # Anglo American (Mining/Resources)
-        "SHP.JO",  # Shoprite (Retail)
-        "VOD.JO"   # Vodacom (Telecommunications)
-    ]
+    # --- Banking & Financial Services ---
+    "FSR.JO",  # FirstRand (Banking)
+    "SBK.JO",  # Standard Bank (Banking)
+    "CPI.JO",  # Capitec Bank (Banking)
+    "ABG.JO",  # Absa Group (Banking)
+    "NED.JO",  # Nedbank Group (Banking)
+    "SLM.JO",  # Sanlam (Insurance / Financials)
+    "DSY.JO",  # Discovery (Insurance / Financials)
+    
+    # --- Technology & Media ---
+    "NPN.JO",  # Naspers (Tech / Internet Investments)
+    "PRX.JO",  # Prosus (Tech / Internet Investments)
+    
+    # --- Mining & Basic Materials (Resources) ---
+    "AGL.JO",  # Anglo American (Diversified Mining)
+    "GFI.JO",  # Gold Fields (Gold Mining)
+    "ANG.JO",  # AngloGold Ashanti (Gold Mining)
+    "SSW.JO",  # Sibanye Stillwater (PGMs and Gold)
+    "IMP.JO",  # Impala Platinum (PGMs)
+    "BHG.JO",  # BHP Group (Diversified Mining)
+    "SOL.JO",  # Sasol (Energy & Chemicals)
+    
+    # --- Retail & Consumer Staples ---
+    "SHP.JO",  # Shoprite Holdings (Food Retail)
+    "WHL.JO",  # Woolworths Holdings (Premium Retail / Apparel)
+    "PIK.JO",  # Pick n Pay Stores (Food Retail)
+    "MRP.JO",  # Mr Price Group (Apparel Retail)
+    "CLC.JO",  # Clicks Group (Pharmacy / Health Retail)
+    "BID.JO",  # Bidcorp (Foodservice)
+    
+    # --- Telecommunications ---
+    "VOD.JO",  # Vodacom Group (Telecoms)
+    "MTN.JO",  # MTN Group (Telecoms)
+    "TKG.JO",  # Telkom SA (Telecoms)
+
+    # --- Healthcare ---
+    "APN.JO",  # Aspen Pharmacare (Pharmaceuticals)
+    "NTC.JO",  # Netcare (Hospitals / Healthcare Services)
+    
+    # --- Industrials & Real Estate ---
+    "BVT.JO",  # Bidvest Group (Diversified Industrials)
+    "GRT.JO",  # Growthpoint Properties (Real Estate Investment Trust - REIT)
+]
     
     print("Running initial portfolio screen...\n")
     portfolio_metrics = fetch_jse_data(target_companies, period="1y")
