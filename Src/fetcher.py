@@ -2,6 +2,9 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 
+# Import your new custom math functions
+from metrics import calculate_annual_volatility, calculate_sharpe_ratio, get_moving_average
+
 def fetch_jse_data(tickers, period="1y"):
     """
     Fetches historical stock data for JSE companies and calculates basic risk metrics.
@@ -30,8 +33,10 @@ def fetch_jse_data(tickers, period="1y"):
             # Calculate Daily Returns
             hist['Daily_Return'] = hist['Close'].pct_change()
             
-            # Calculate 50-Day Moving Average (momentum/trend metric)
-            hist['50_Day_MA'] = hist['Close'].rolling(window=50).mean()
+            # Use metrics.py for calculations
+            hist['50_Day_MA'] = get_moving_average(hist['Close'], window=50)
+            avg_daily_volatility = calculate_annual_volatility(hist['Daily_Return'])
+            sharpe = calculate_sharpe_ratio(hist['Daily_Return'])
             
             # Extract current price and basic metrics
             current_price = hist['Close'].iloc[-1]
