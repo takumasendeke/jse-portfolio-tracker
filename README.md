@@ -15,4 +15,4 @@ This repository contains the quantitative screening scripts, data pipelines, and
 * **Taku** – Tech Lead (Pipeline & Python Analytics)
 * **TBD** – Finance Lead (EasyEquities Execution & Sector Analysis)
 * **TBD** – Operations Lead (Excel Portfolio Tracker & Logging)
-* **TBD** – Research Lead (Market News & Risk Assessments)
+* **Menzi** – Research Lead (Market News & Risk Assessments)
