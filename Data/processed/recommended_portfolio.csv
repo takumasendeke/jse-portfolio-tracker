@@ -1,0 +1,6 @@
+Ticker,Company_Name,Current_Price_ZAc,Annual_Volatility,50_Day_MA,Total_Return_1Y,Risk_Adj_Return,Strategy
+RES.JO,Resilient REIT Limited,8094.0,0.1777,8188.52,0.2388,1.3438379290939788,Long-Term Core
+EQU.JO,Equites Prop Fund Ltd,1769.0,0.1898,1752.4,0.0842,0.4436248682824025,Long-Term Core
+CPI.JO,Capitec Bank Hldgs Ltd,485774.0,0.2066,467335.02,0.3211,1.5542110358180057,Long-Term Core
+AGL.JO,Anglo American plc,84061.0,0.3605,82409.32,0.6572,1.8230235783633844,Short-Term Tactical
+SOL.JO,Sasol Limited,18681.0,0.6413,18581.64,0.9023,1.4069858100732886,Short-Term Tactical

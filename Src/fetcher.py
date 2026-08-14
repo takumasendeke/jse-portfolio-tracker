@@ -30,33 +30,36 @@ def fetch_jse_data(tickers, period="1y"):
                 print(f"Warning: No data found for {ticker}")
                 continue
                 
+            # Fetch company name dynamically from Yahoo Finance
+            # We check shortName first, then longName, and fallback to the ticker if both fail
+            info = stock.info
+            company_name = info.get('shortName') or info.get('longName') or ticker
+            
             # Calculate Daily Returns
             hist['Daily_Return'] = hist['Close'].pct_change()
             
-            # Use metrics.py for calculations
+            # Use metrics.py for calculations (assuming you imported them)
             hist['50_Day_MA'] = get_moving_average(hist['Close'], window=50)
             avg_daily_volatility = calculate_annual_volatility(hist['Daily_Return'])
             sharpe = calculate_sharpe_ratio(hist['Daily_Return'])
             
-            # Extract current price and basic metrics
+            # Extract current price
             current_price = hist['Close'].iloc[-1]
-            
-            # Annualized volatility (assuming 252 trading days in a year)
-            avg_daily_volatility = hist['Daily_Return'].std() * np.sqrt(252) 
             
             metrics.append({
                 'Ticker': ticker,
+                'Company_Name': company_name,  # <-- Added this line
                 'Current_Price_ZAc': round(current_price, 2),
                 'Annual_Volatility': round(avg_daily_volatility, 4),
                 '50_Day_MA': round(hist['50_Day_MA'].iloc[-1], 2),
                 'Total_Return_1Y': round((current_price / hist['Close'].iloc[0]) - 1, 4)
             })
             
-            print(f"Successfully processed {ticker}")
+            print(f"Successfully processed {ticker} - {company_name}")
             
         except Exception as e:
             print(f"Failed to fetch {ticker}: {e}")
-            
+
     # Compile into a DataFrame for easy viewing and exporting
     results_df = pd.DataFrame(metrics)
     return results_df
@@ -65,49 +68,23 @@ from pathlib import Path
 
 if __name__ == "__main__":
     target_companies = [
-    # --- Banking & Financial Services ---
-    "FSR.JO",  # FirstRand (Banking)
-    "SBK.JO",  # Standard Bank (Banking)
-    "CPI.JO",  # Capitec Bank (Banking)
-    "ABG.JO",  # Absa Group (Banking)
-    "NED.JO",  # Nedbank Group (Banking)
-    "SLM.JO",  # Sanlam (Insurance / Financials)
-    "DSY.JO",  # Discovery (Insurance / Financials)
-    
-    # --- Technology & Media ---
-    "NPN.JO",  # Naspers (Tech / Internet Investments)
-    "PRX.JO",  # Prosus (Tech / Internet Investments)
-    
-    # --- Mining & Basic Materials (Resources) ---
-    "AGL.JO",  # Anglo American (Diversified Mining)
-    "GFI.JO",  # Gold Fields (Gold Mining)
-    "ANG.JO",  # AngloGold Ashanti (Gold Mining)
-    "SSW.JO",  # Sibanye Stillwater (PGMs and Gold)
-    "IMP.JO",  # Impala Platinum (PGMs)
-    "BHG.JO",  # BHP Group (Diversified Mining)
-    "SOL.JO",  # Sasol (Energy & Chemicals)
-    
-    # --- Retail & Consumer Staples ---
-    "SHP.JO",  # Shoprite Holdings (Food Retail)
-    "WHL.JO",  # Woolworths Holdings (Premium Retail / Apparel)
-    "PIK.JO",  # Pick n Pay Stores (Food Retail)
-    "MRP.JO",  # Mr Price Group (Apparel Retail)
-    "CLC.JO",  # Clicks Group (Pharmacy / Health Retail)
-    "BID.JO",  # Bidcorp (Foodservice)
-    
-    # --- Telecommunications ---
-    "VOD.JO",  # Vodacom Group (Telecoms)
-    "MTN.JO",  # MTN Group (Telecoms)
-    "TKG.JO",  # Telkom SA (Telecoms)
-
-    # --- Healthcare ---
-    "APN.JO",  # Aspen Pharmacare (Pharmaceuticals)
-    "NTC.JO",  # Netcare (Hospitals / Healthcare Services)
-    
-    # --- Industrials & Real Estate ---
-    "BVT.JO",  # Bidvest Group (Diversified Industrials)
-    "GRT.JO",  # Growthpoint Properties (Real Estate Investment Trust - REIT)
-]
+        # Banking & Financials
+        "FSR.JO", "SBK.JO", "CPI.JO", "ABG.JO", "NED.JO", "SLM.JO", "DSY.JO", "INL.JO", "INP.JO", "OUT.JO", "RMI.JO",
+        # Tech & Media
+        "NPN.JO", "PRX.JO", "BKG.JO", "DTC.JO",
+        # Mining & Resources
+        "AGL.JO", "GFI.JO", "ANG.JO", "SSW.JO", "IMP.JO", "BHG.JO", "SOL.JO", "NHM.JO", "ARI.JO", "KIO.JO", "EXX.JO", "DRD.JO", "MRF.JO", "HAR.JO",
+        # Retail & Consumer
+        "SHP.JO", "WHL.JO", "PIK.JO", "MRP.JO", "BID.JO", "CLC.JO", "SPP.JO", "TFG.JO", "TRU.JO", "PEP.JO", "CSB.JO",
+        # Telecommunications
+        "VOD.JO", "MTN.JO", "TKG.JO", "BLU.JO",
+        # Healthcare
+        "APN.JO", "NTC.JO", "LHC.JO", "MEI.JO",
+        # Industrials, Food & Packaging
+        "BVT.JO", "AVI.JO", "BAW.JO", "SNT.JO", "OMU.JO", "KAP.JO", "MND.JO", "SAP.JO", "TSG.JO",
+        # Real Estate (REITs)
+        "GRT.JO", "RDF.JO", "RES.JO", "MAS.JO", "NEP.JO", "EQU.JO", "LTE.JO", "SAC.JO"
+    ]
     
     print("Running initial portfolio screen...\n")
     portfolio_metrics = fetch_jse_data(target_companies, period="1y")
