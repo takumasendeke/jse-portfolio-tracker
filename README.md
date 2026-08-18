@@ -13,6 +13,6 @@ This repository contains the quantitative screening scripts, data pipelines, and
 
 ## Group Members & Roles
 * **Taku** – Tech Lead (Pipeline & Python Analytics)
-* **TBD** – Finance Lead (EasyEquities Execution & Sector Analysis)
-* **TBD** – Operations Lead (Excel Portfolio Tracker & Logging)
+* **Eesha** – Finance Lead (EasyEquities Execution & Sector Analysis)
+* **Jarrod** – Operations Lead (Excel Portfolio Tracker & Logging)
 * **Menzi** – Research Lead (Market News & Risk Assessments)
